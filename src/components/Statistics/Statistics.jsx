@@ -4,10 +4,20 @@ import Feedback from 'components/Feedback/Feedback';
 
 class Statistics extends React.Component {
             state = {
-        good: this.props.initialGood,
-        neutral: this.props.initialNeutral,
-        bad: this.props.initialBad,
+        good: 0,
+        neutral: 0,
+        bad: 0,
+        total: 0,
+        positiveFeedback: 0
+
     };
+  countTotalFeedback = () => {
+    this.setState(prevState=>{
+ return {total: prevState.good + prevState.neutral + prevState.bad}
+    })
+  };
+
+
     handleGood = () => {
         this.setState(prevState => {
             return {
@@ -39,6 +49,8 @@ class Statistics extends React.Component {
         <li>Good:<span className='GoodValue'>{this.state.good}</span></li>
         <li>Neutral:<span className='NeutralValue'>{this.state.neutral}</span></li>
         <li>Bad:<span className='BadValue'>{this.state.bad}</span></li>
+        <li>Total:<span className='TotalValue'>{this.state.total}</span></li>
+        <li>Positive feedback:<span className='Positive feedback'>{this.state.positiveFeedback}</span></li>
                 </ul>
                  <Feedback
                     onGood={this.handleGood}
