@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
 // import PropTypes from 'prop-types'
 import Feedback from 'components/Feedback/Feedback';
-
+ 
 class Statistics extends Component {
             state = {
         good: 0,
