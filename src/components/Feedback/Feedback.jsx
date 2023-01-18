@@ -1,4 +1,4 @@
-import React from "react";
+import React,{Component} from "react";
 
 const Feedback = ({ onGood, onNeutral, onBad }) => {
     return (<div>

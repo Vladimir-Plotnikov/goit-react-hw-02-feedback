@@ -1,8 +1,8 @@
-import React from 'react';
+import React,{Component} from 'react';
 // import PropTypes from 'prop-types'
 import Feedback from 'components/Feedback/Feedback';
 
-class Statistics extends React.Component {
+class Statistics extends Component {
             state = {
         good: 0,
         neutral: 0,
@@ -11,6 +11,13 @@ class Statistics extends React.Component {
 
       countTotalFeedback = () => {
     return this.state.good + this.state.neutral + this.state.bad
+  };
+
+  countPositiveFeedbackPercentage = () => {
+    if (!this.countTotalFeedback()) {
+      return 0;
+    }
+    return Math.round((this.state.good / this.countTotalFeedback()) * 100);
   };
 
 
@@ -45,8 +52,8 @@ class Statistics extends React.Component {
         <li>Good:<span className='GoodValue'>{this.state.good}</span></li>
         <li>Neutral:<span className='NeutralValue'>{this.state.neutral}</span></li>
         <li>Bad:<span className='BadValue'>{this.state.bad}</span></li>
-        <li>Total:<span className='TotalValue'>{this.countTotalFeedback}</span></li>
-        <li>Positive feedback:<span className='Positive feedback'>{0}</span></li>
+        <li>Total:<span className='TotalValue'>{this.countTotalFeedback()}</span></li>
+        <li>Positive feedback:<span className='Positive feedback'>{this.countPositiveFeedbackPercentage()}%</span></li>
                 </ul>
                  <Feedback
                     onGood={this.handleGood}
