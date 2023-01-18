@@ -6,7 +6,6 @@ export const App = () => {
   return (<div>
     {/* <Feedback /> */}
     <Statistics
-      
     />
   </div>
   )
