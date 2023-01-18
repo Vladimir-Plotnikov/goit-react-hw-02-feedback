@@ -7,14 +7,11 @@ class Statistics extends React.Component {
         good: 0,
         neutral: 0,
         bad: 0,
-        total: 0,
-        positiveFeedback: 0,
-
     };
 
-      countTotalFeedback = () => {
-        this.setState({total: this.state.good + this.state.neutral + this.state.bad})
-  };
+//       countTotalFeedback = () => {
+//     return(this.state.good + this.state.neutral + this.state.bad)
+//   };
 
 
     handleGood = () => {
@@ -48,8 +45,8 @@ class Statistics extends React.Component {
         <li>Good:<span className='GoodValue'>{this.state.good}</span></li>
         <li>Neutral:<span className='NeutralValue'>{this.state.neutral}</span></li>
         <li>Bad:<span className='BadValue'>{this.state.bad}</span></li>
-        <li>Total:<span className='TotalValue'>{this.state.total}</span></li>
-        <li>Positive feedback:<span className='Positive feedback'>{this.state.positiveFeedback}</span></li>
+        <li>Total:<span className='TotalValue'>{this.state.good+this.state.neutral+this.state.bad}</span></li>
+        <li>Positive feedback:<span className='Positive feedback'>{0}</span></li>
                 </ul>
                  <Feedback
                     onGood={this.handleGood}
