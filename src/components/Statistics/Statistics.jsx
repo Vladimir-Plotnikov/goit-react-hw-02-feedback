@@ -8,13 +8,12 @@ class Statistics extends React.Component {
         neutral: 0,
         bad: 0,
         total: 0,
-        positiveFeedback: 0
+        positiveFeedback: 0,
 
     };
-  countTotalFeedback = () => {
-    this.setState(prevState=>{
- return {total: prevState.good + prevState.neutral + prevState.bad}
-    })
+
+      countTotalFeedback = () => {
+ return { total: this.state.good + this.state.neutral + this.state.bad}
   };
 
 
