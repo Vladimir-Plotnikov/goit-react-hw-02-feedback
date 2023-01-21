@@ -1,65 +1,26 @@
-import React,{Component} from 'react';
-// import PropTypes from 'prop-types'
-import Feedback from 'components/Feedback/Feedback';
- 
-class Statistics extends Component {
-            state = {
-        good: 0,
-        neutral: 0,
-        bad: 0,
-    };
+import React from 'react';
+import PropTypes from 'prop-types'
 
-      countTotalFeedback = () => {
-    return this.state.good + this.state.neutral + this.state.bad
-  };
-
-  countPositiveFeedbackPercentage = () => {
-    if (!this.countTotalFeedback()) {
-      return 0;
-    }
-    return Math.round((this.state.good / this.countTotalFeedback()) * 100);
-  };
-
-
-    handleGood = () => {
-        this.setState(prevState => {
-            return {
-                good: prevState.good += 1,
-            }
-        });
-    };
-    handleNeutral = () => {
-        this.setState(prevState => {
-            return {
-                neutral: prevState.neutral +=1
-            }
-        }
-        )
-    };
-    handleBad = () => {
-        this.setState(prevState => {
-            return {
-                bad: prevState.bad +1
-            }
-        })
-    }
-
-    render() {
-        return (
-                 <div>
-                <h1>Statistics</h1>
+function Statistics({ good, neutral, bad, total, positivePercentage }) {
+    return (
+        <div>
                 <ul>
-        <li>Good:<span className='GoodValue'>{this.state.good}</span></li>
-        <li>Neutral:<span className='NeutralValue'>{this.state.neutral}</span></li>
-        <li>Bad:<span className='BadValue'>{this.state.bad}</span></li>
-        <li>Total:<span className='TotalValue'>{this.countTotalFeedback()}</span></li>
-        <li>Positive feedback:<span className='Positive feedback'>{this.countPositiveFeedbackPercentage()}%</span></li>
-                </ul>
-                 <Feedback
-                    onGood={this.handleGood}
-                    onNeutral={this.handleNeutral}
-                    onBad={this.handleBad} /> 
-</div>
-    )}
+        <li>Good:<span className='GoodValue'>{good}</span></li>
+        <li>Neutral:<span className='NeutralValue'>{neutral}</span></li>
+        <li>Bad:<span className='BadValue'>{bad}</span></li>
+        <li>Total:<span className='TotalValue'>{total}</span></li>
+        <li>Positive feedback:<span className='Positive feedback'>{positivePercentage}%</span></li>
+            </ul>
+        </div>
+    )
 }
+
 export default Statistics;
+
+Statistics.propTypes = {
+    good: PropTypes.number.isRequired,
+    neutral: PropTypes.number.isRequired,
+    bad: PropTypes.number.isRequired,
+    total: PropTypes.number.isRequired,
+    positivePercentage: PropTypes.number.isRequired
+}
